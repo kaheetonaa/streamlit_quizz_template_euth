@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
 @st.cache_resource
 def init_connection():
-    return MongoClient("mongodb+srv://st.secrets.username:st.secrets.password@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=st.secrets.cluster_name")
+    return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 client = init_connection()
 
