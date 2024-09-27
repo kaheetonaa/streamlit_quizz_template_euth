@@ -2,6 +2,10 @@ from pymongo import MongoClient
 import streamlit as st
 import json
 
+@st.cache_resource
+def init_connection():
+    return MongoClient(**st.secrets["mongo"])
+
 uri = "mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(uri,tlsAllowInvalidCertificates=True)
 db=client['EuthMappers']
