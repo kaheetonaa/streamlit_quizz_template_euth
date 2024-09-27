@@ -2,16 +2,6 @@ from pymongo import MongoClient
 import streamlit as st
 import json
 
-@st.cache_resource
-def init_connection():
-    return MongoClient(**st.secrets["mongo"])
-
-uri = "mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-client = MongoClient(uri,tlsAllowInvalidCertificates=True)
-db=client['EuthMappers']
-collection=db['EuthMappers']
-post={'huy':'testsubmit','test2':'test'}
-
 def run():
     st.set_page_config(
         page_title="🌐 EuthMappers quizz",
@@ -20,6 +10,18 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+@st.cache_resource
+def init_connection():
+    return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",tlsAllowInvalidCertificates=True)
+
+client = init_connection()
+
+db=client['EuthMappers']
+collection=db['EuthMappers']
+post={'huy':'testsubmit','test2':'test'}
+
+
 
 # Custom CSS for the buttons
 st.markdown("""
