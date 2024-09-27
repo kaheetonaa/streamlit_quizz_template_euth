@@ -1,9 +1,16 @@
+from pymongo import MongoClient
 import streamlit as st
 import json
 
+uri = "mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+client = MongoClient(uri,tlsAllowInvalidCertificates=True)
+db=client['EuthMappers']
+collection=db['EuthMappers']
+post={'huy':'testsubmit','test2':'test'}
+
 def run():
     st.set_page_config(
-        page_title="Streamlit quizz app",
+        page_title="🌐 EuthMappers quizz",
         page_icon="❓",
     )
 
@@ -28,11 +35,11 @@ for key, value in default_values.items():
 with open('content/quiz_data.json', 'r', encoding='utf-8') as f:
     quiz_data = json.load(f)
 
-def restart_quiz():
-    st.session_state.current_index = 0
-    st.session_state.score = 0
-    st.session_state.selected_option = None
-    st.session_state.answer_submitted = False
+#def restart_quiz():
+#    st.session_state.current_index = 0
+#    st.session_state.score = 0
+#    st.session_state.selected_option = None
+#    st.session_state.answer_submitted = False
 
 def submit_answer():
 
@@ -40,6 +47,7 @@ def submit_answer():
     if st.session_state.selected_option is not None:
         # Mark the answer as submitted
         st.session_state.answer_submitted = True
+        collection.insert_one(post)
         # Check if the selected option is correct
         if st.session_state.selected_option == quiz_data[st.session_state.current_index]['answer']:
             st.session_state.score += 10
@@ -47,20 +55,24 @@ def submit_answer():
         # If no option selected, show a message and do not mark as submitted
         st.warning("Please select an option before submitting.")
 
-def next_question():
-    st.session_state.current_index += 1
-    st.session_state.selected_option = None
-    st.session_state.answer_submitted = False
+#def next_question():
+#    st.session_state.current_index += 1
+#    st.session_state.selected_option = None
+#    st.session_state.answer_submitted = False
 
 # Title and description
-st.title("Streamlit Quiz App")
+st.title("🌐 EuthMappers Quiz")
+
+
 
 # Progress bar
-progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
-st.metric(label="Score", value=f"{st.session_state.score} / {len(quiz_data) * 10}")
-st.progress(progress_bar_value)
+#progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
+#st.metric(label="Score", value=f"{st.session_state.score} / {len(quiz_data) * 10}")
+#st.progress(progress_bar_value)
 
 # Display the question and answer options
+
+
 question_item = quiz_data[st.session_state.current_index]
 st.subheader(f"Question {st.session_state.current_index + 1}")
 st.title(f"{question_item['question']}")
@@ -89,13 +101,14 @@ else:
 st.markdown(""" ___""")
 
 # Submission button and response logic
-if st.session_state.answer_submitted:
-    if st.session_state.current_index < len(quiz_data) - 1:
-        st.button('Next', on_click=next_question)
-    else:
-        st.write(f"Quiz completed! Your score is: {st.session_state.score} / {len(quiz_data) * 10}")
-        if st.button('Restart', on_click=restart_quiz):
-            pass
-else:
-    if st.session_state.current_index < len(quiz_data):
-        st.button('Submit', on_click=submit_answer)
+#if st.session_state.answer_submitted:
+#    if st.session_state.current_index < len(quiz_data) - 1:
+#        st.button('Next', on_click=next_question)
+#    else:
+#        st.write(f"Quiz completed! Your score is: {st.session_state.score} / {len(quiz_data) * 10}")
+#        if st.button('Restart', on_click=restart_quiz):
+#            pass
+#else:
+if not st.session_state.answer_submitted:
+    st.button('Submit', on_click=submit_answer)
+    
