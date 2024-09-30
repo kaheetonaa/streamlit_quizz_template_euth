@@ -87,7 +87,7 @@ divEnd = """</div>"""
 
 
 with container1:
-    st.html("<img src='asset/logo.png'/>")
+    st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' width='5%'/>")
 
     # Progress bar
     #progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
