@@ -27,6 +27,18 @@ st.markdown("""
     [role=radiogroup]{
         gap: 1rem;
     }
+    h1 {
+        text-align: center
+    }
+    h2 {
+        text-align: center
+    }
+    h3 {
+        text-align: center
+    }
+    div[data-testid='stAppViewBlockContainer']{
+        background-color: white;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -69,81 +81,87 @@ def submit_answer():
 #    st.session_state.answer_submitted = False
 
 # Title and description
-st.title("🌐 EuthMappers Quiz")
+container1 = st.container()
+div = """<div class = 'test1'>"""
+divEnd = """</div>"""
 
 
+with container1:
+    st.image('asset/0.png')
+    st.title("EuthMappers Quiz: UN Mappers")
 
-# Progress bar
-#progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
-#st.metric(label="Score", value=f"{st.session_state.score} / {len(quiz_data) * 10}")
-#st.progress(progress_bar_value)
+    # Progress bar
+    #progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
+    #st.metric(label="Score", value=f"{st.session_state.score} / {len(quiz_data) * 10}")
+    #st.progress(progress_bar_value)
 
-# Display the question and answer options
+    # Display the question and answer options
 
 
-question_item = quiz_data[st.session_state.current_index]
-st.subheader(f"Question {st.session_state.current_index + 1}")
-st.title(f"{question_item['question']}")
-st.write(question_item['information'])
+    question_item = quiz_data[st.session_state.current_index]
 
-st.markdown(""" ___""")
+    st.subheader(f"Question {st.session_state.current_index + 1}")
+    st.header(f"{question_item['question']}")
+    st.write(question_item['information'])
 
-# Answer selection
-options = question_item['options']
-correct_answer = question_item['answer']
+    st.markdown(""" ___""")
+    # Answer selection
+    options = question_item['options']
+    correct_answer = question_item['answer']
 
-if st.session_state.answer_submitted:
-    if correct_answer=='Free':
-        st.write('You have submitted as '+str(st.session_state.selected_option)[1:-1])
-    else:
-        if st.session_state.selected_option==correct_answer:
-            st.write("Correct!")
+    if st.session_state.answer_submitted:
+        if correct_answer=='Free':
+            st.write('You have submitted as '+str(st.session_state.selected_option)[1:-1])
         else:
-            st.write("Not really...")
-            st.write('The correct answer should be:'+str(correct_answer)[1:-1])
-    #for i, option in enumerate(options):
-    #    label = option
-    #   if option == correct_answer:
-    #       st.success(f"{label} (Correct answer)")
-    #    elif option == st.session_state.selected_option:
-    #        st.error(f"{label} (Incorrect answer)")
+            if st.session_state.selected_option==correct_answer:
+                st.success("Correct!")
+            else:
+                st.error("Not really...")
+                st.write('The correct answer should be:'+str(correct_answer)[1:-1])
+        #for i, option in enumerate(options):
+        #    label = option
+        #   if option == correct_answer:
+        #       st.success(f"{label} (Correct answer)")
+        #    elif option == st.session_state.selected_option:
+        #        st.error(f"{label} (Incorrect answer)")
+        #    else:
+        #        st.write(label)
+    else:
+        school = st.selectbox(
+        "Where is your school",
+        ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
+        )
+        match question_item['type']:
+                case 'single':
+                    answer=st.radio(label='',options=options)
+                    st.session_state.selected_option=[answer]
+                case 'multiple':
+                    for i, option in enumerate(options):
+                        answer.append(st.checkbox(option))
+                        if (answer[i]):
+                            if option not in st.session_state.selected_option:
+                                st.session_state.selected_option.append(option)
+                                st.session_state.selected_option=sorted(st.session_state.selected_option)
+                        if (answer[i]==False):
+                            if option in st.session_state.selected_option:
+                                st.session_state.selected_option.remove(option)
+                        #if st.button(option, key=i, use_container_width=True):
+                        #    st.session_state.selected_option = option
+        st.markdown(""" ___""")
+        if len(st.session_state.selected_option)>0:
+            st.write('You have selected **'+ str(st.session_state.selected_option)[1:-1]+'**')
+
+
+
+    # Submission button and response logic
+    #if st.session_state.answer_submitted:
+    #    if st.session_state.current_index < len(quiz_data) - 1:
+    #        st.button('Next', on_click=next_question)
     #    else:
-    #        st.write(label)
-else:
-    school = st.selectbox(
-    "Where is your school",
-    ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
-    )
-    match question_item['type']:
-            case 'single':
-                answer=st.radio(label='',options=options)
-                st.session_state.selected_option=[answer]
-            case 'multiple':
-                for i, option in enumerate(options):
-                    answer.append(st.checkbox(option))
-                    if (answer[i]):
-                        if option not in st.session_state.selected_option:
-                            st.session_state.selected_option.append(option)
-                            st.session_state.selected_option=sorted(st.session_state.selected_option)
-                    if (answer[i]==False):
-                        if option in st.session_state.selected_option:
-                            st.session_state.selected_option.remove(option)
-                    #if st.button(option, key=i, use_container_width=True):
-                    #    st.session_state.selected_option = option
-    if len(st.session_state.selected_option)>0:
-        st.write('You have selected **'+ str(st.session_state.selected_option)[1:-1]+'**')
-
-st.markdown(""" ___""")
-
-# Submission button and response logic
-#if st.session_state.answer_submitted:
-#    if st.session_state.current_index < len(quiz_data) - 1:
-#        st.button('Next', on_click=next_question)
-#    else:
-#        st.write(f"Quiz completed! Your score is: {st.session_state.score} / {len(quiz_data) * 10}")
-#        if st.button('Restart', on_click=restart_quiz):
-#            pass
-#else:
-if not st.session_state.answer_submitted:
-    st.button('Submit', on_click=submit_answer)
-    
+    #        st.write(f"Quiz completed! Your score is: {st.session_state.score} / {len(quiz_data) * 10}")
+    #        if st.button('Restart', on_click=restart_quiz):
+    #            pass
+    #else:
+    if not st.session_state.answer_submitted:
+        st.button('Submit', on_click=submit_answer)
+        
