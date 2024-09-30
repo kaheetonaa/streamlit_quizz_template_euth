@@ -24,14 +24,15 @@ collection=db['EuthMappers']
 # Custom CSS for the buttons
 st.markdown("""
 <style>
-div.stButton > button:first-child {
-    display: block;
-    margin: 0 auto;
+    [role=radiogroup]{
+        gap: 1rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # Initialize session variables if they do not exist
-default_values = {'current_index': int(st.query_params['index']), 'current_question': 0, 'score': 0, 'selected_option': None, 'answer_submitted': False}
+answer=[]
+default_values = {'current_index': int(st.query_params['index']), 'current_question': 0, 'score': 0, 'selected_option': [], 'answer_submitted': False}
 for key, value in default_values.items():
     st.session_state.setdefault(key, value)
 
@@ -51,11 +52,13 @@ def submit_answer():
     if st.session_state.selected_option is not None and school is not None:
         # Mark the answer as submitted
         st.session_state.answer_submitted = True
-        post={'question':st.session_state.current_index,'school':school,'selection':st.session_state.selected_option}
-        collection.insert_one(post)
+        for selection in st.session_state.selected_option:
+            post={'question':st.session_state.current_index,'school':school,'selection':selection}
+            collection.insert_one(post)
+        
         # Check if the selected option is correct
-        if st.session_state.selected_option == quiz_data[st.session_state.current_index]['answer']:
-            st.session_state.score += 10
+        #if st.session_state.selected_option == quiz_data[st.session_state.current_index]['answer']:
+        #    st.session_state.score += 10
     else:
         # If no option selected, show a message and do not mark as submitted
         st.warning("Please select an option before submitting.")
@@ -90,24 +93,45 @@ options = question_item['options']
 correct_answer = question_item['answer']
 
 if st.session_state.answer_submitted:
-    for i, option in enumerate(options):
-        label = option
-        if option == correct_answer:
-            st.success(f"{label} (Correct answer)")
-        elif option == st.session_state.selected_option:
-            st.error(f"{label} (Incorrect answer)")
+    if correct_answer=='Free':
+        st.write('You have submitted as '+str(st.session_state.selected_option)[1:-1])
+    else:
+        if st.session_state.selected_option==correct_answer:
+            st.write("Correct!")
         else:
-            st.write(label)
+            st.write("Not really...")
+            st.write('The correct answer should be:'+str(correct_answer)[1:-1])
+    #for i, option in enumerate(options):
+    #    label = option
+    #   if option == correct_answer:
+    #       st.success(f"{label} (Correct answer)")
+    #    elif option == st.session_state.selected_option:
+    #        st.error(f"{label} (Incorrect answer)")
+    #    else:
+    #        st.write(label)
 else:
     school = st.selectbox(
     "Where is your school",
     ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
     )
-    for i, option in enumerate(options):
-        if st.button(option, key=i, use_container_width=True):
-            st.session_state.selected_option = option
-    if st.session_state.selected_option is not None:
-        st.write('You have selected **'+ st.session_state.selected_option+'**')
+    match question_item['type']:
+            case 'single':
+                answer=st.radio(label='',options=options)
+                st.session_state.selected_option=[answer]
+            case 'multiple':
+                for i, option in enumerate(options):
+                    answer.append(st.checkbox(option))
+                    if (answer[i]):
+                        if option not in st.session_state.selected_option:
+                            st.session_state.selected_option.append(option)
+                            st.session_state.selected_option=sorted(st.session_state.selected_option)
+                    if (answer[i]==False):
+                        if option in st.session_state.selected_option:
+                            st.session_state.selected_option.remove(option)
+                    #if st.button(option, key=i, use_container_width=True):
+                    #    st.session_state.selected_option = option
+    if len(st.session_state.selected_option)>0:
+        st.write('You have selected **'+ str(st.session_state.selected_option)[1:-1]+'**')
 
 st.markdown(""" ___""")
 
