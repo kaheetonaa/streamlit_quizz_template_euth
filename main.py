@@ -87,7 +87,7 @@ divEnd = """</div>"""
 
 
 with container1:
-    st.html("<img src='asset/logo.png'/> width='5%'")
+    st.html("<img src='asset/logo.png' width='5%'/>")
 
     # Progress bar
     #progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
