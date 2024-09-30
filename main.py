@@ -87,6 +87,9 @@ divEnd = """</div>"""
 
 
 with container1:
+    left_co, cent_co,last_co = st.columns(3)
+    with cent_co:
+        st.image(logo)
     st.image('asset/logo.png')
     st.title("EuthMappers Quiz: UN Mappers")
 
