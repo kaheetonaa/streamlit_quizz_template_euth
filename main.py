@@ -19,7 +19,6 @@ client = init_connection()
 
 db=client['EuthMappers']
 collection=db['EuthMappers']
-post={'huy':'testsubmit','test2':'test'}
 
 
 
@@ -50,9 +49,10 @@ with open('content/quiz_data.json', 'r', encoding='utf-8') as f:
 def submit_answer():
 
     # Check if an option has been selected
-    if st.session_state.selected_option is not None:
+    if st.session_state.selected_option is not None and school is not None:
         # Mark the answer as submitted
         st.session_state.answer_submitted = True
+        post={'school':school,'selection':st.session_state.selected_option}
         collection.insert_one(post)
         # Check if the selected option is correct
         if st.session_state.selected_option == quiz_data[st.session_state.current_index]['answer']:
@@ -100,6 +100,10 @@ if st.session_state.answer_submitted:
         else:
             st.write(label)
 else:
+    school = st.selectbox(
+    "Where is your school",
+    ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
+    )
     for i, option in enumerate(options):
         if st.button(option, key=i, use_container_width=True):
             st.session_state.selected_option = option
