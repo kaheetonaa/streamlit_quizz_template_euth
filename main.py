@@ -87,10 +87,7 @@ divEnd = """</div>"""
 
 
 with container1:
-    left_co, cent_co,last_co = st.columns(3)
-    with cent_co:
-        st.image('asset/logo.png')
-    st.title("EuthMappers Quiz: UN Mappers")
+    st.html("<img src='asset/logo.png'/> width='50%'")
 
     # Progress bar
     #progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
