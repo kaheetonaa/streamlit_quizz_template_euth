@@ -119,6 +119,7 @@ with container1:
             st.write('You have submitted as '+str(st.session_state.selected_option)[1:-1])
         else:
             if st.session_state.selected_option==correct_answer:
+                st.balloons()
                 st.success("Correct!")
             else:
                 st.error("Not really...")
