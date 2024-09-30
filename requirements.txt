@@ -1,3 +1,4 @@
 streamlit
 pymongo[srv]
 setuptools
+pandas
