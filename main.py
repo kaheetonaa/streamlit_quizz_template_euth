@@ -87,7 +87,7 @@ divEnd = """</div>"""
 
 
 with container1:
-    st.image('asset/0.png')
+    st.image('asset/logo.png')
     st.title("EuthMappers Quiz: UN Mappers")
 
     # Progress bar
