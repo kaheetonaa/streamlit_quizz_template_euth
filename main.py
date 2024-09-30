@@ -21,7 +21,6 @@ db=client['EuthMappers']
 collection=db['EuthMappers']
 
 
-
 # Custom CSS for the buttons
 st.markdown("""
 <style>
@@ -32,7 +31,7 @@ div.stButton > button:first-child {
 """, unsafe_allow_html=True)
 
 # Initialize session variables if they do not exist
-default_values = {'current_index': 0, 'current_question': 0, 'score': 0, 'selected_option': None, 'answer_submitted': False}
+default_values = {'current_index': int(st.query_params['index']), 'current_question': 0, 'score': 0, 'selected_option': None, 'answer_submitted': False}
 for key, value in default_values.items():
     st.session_state.setdefault(key, value)
 
@@ -52,7 +51,7 @@ def submit_answer():
     if st.session_state.selected_option is not None and school is not None:
         # Mark the answer as submitted
         st.session_state.answer_submitted = True
-        post={'school':school,'selection':st.session_state.selected_option}
+        post={'question':st.session_state.current_index,'school':school,'selection':st.session_state.selected_option}
         collection.insert_one(post)
         # Check if the selected option is correct
         if st.session_state.selected_option == quiz_data[st.session_state.current_index]['answer']:
@@ -107,6 +106,8 @@ else:
     for i, option in enumerate(options):
         if st.button(option, key=i, use_container_width=True):
             st.session_state.selected_option = option
+    if st.session_state.selected_option is not None:
+        st.write('You have selected **'+ st.session_state.selected_option+'**')
 
 st.markdown(""" ___""")
 
