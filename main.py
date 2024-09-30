@@ -39,6 +39,12 @@ st.markdown("""
     div[data-testid='stAppViewBlockContainer']{
         background-color: white;
     }
+            .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -87,7 +93,7 @@ divEnd = """</div>"""
 
 
 with container1:
-    st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' width='5%'/>")
+    st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
 
     # Progress bar
     #progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
