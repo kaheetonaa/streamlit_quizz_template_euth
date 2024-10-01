@@ -7,7 +7,8 @@ def run():
     st.set_page_config(
         page_title="🌐 EuthMappers quizz result",
         page_icon="✅",
-        layout="wide"
+        layout="wide",
+        initial_sidebar_state='expanded'
     )
 
 if __name__ == "__main__":
@@ -62,12 +63,14 @@ st.markdown("""
 container1 = st.container()
 placeholder = st.empty()
 result=pd.DataFrame(list(collection.find()))
-
+with st.sidebar:
+    if st.button('Refresh 🔄'):
+        placeholder.empty()
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-    if st.button('Refresh 🔄'):
-        placeholder.empty()
+
+    
     if 'question' in result:
     
 
