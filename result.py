@@ -176,9 +176,6 @@ with container1:
         titleFont='comfortaa',
         titleFontSize=16
         ).configure_bar(size=30)
-
-        col1,col2 = st.columns([1,5])
-        with col2:
-            st.altair_chart(chart,theme=None)
+        st.altair_chart(chart,theme=None)
     else:
         st.write('No answers yet')
