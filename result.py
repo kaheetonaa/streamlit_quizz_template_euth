@@ -92,7 +92,7 @@ with container1:
             color=color
         ).add_params(
             click
-        ).properties(width=800)
+        ).properties(width=500)
 
         chart1B = alt.Chart(result0).mark_bar(
         ).encode(
@@ -167,7 +167,7 @@ with container1:
         titleFontSize=16
         ).configure_bar(size=50,dx=20)
 
-        col1,col2 = st.columns([1,4])
+        col1,col2 = st.columns([1,8])
         with col2:
             st.altair_chart(chart,theme=None)
     else:
