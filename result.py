@@ -30,8 +30,10 @@ st.markdown("""
     [role=radiogroup]{
         gap: 1rem;
     }
-    .css-1aumxhk {
+    div[data-testid="stSidebarContent"] {
     background-color: white;
+    border:solid;
+    border-color:#62CBEC32;
     }
     h1 {
         text-align: center
