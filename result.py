@@ -85,7 +85,7 @@ if 'question' in result:
     alt.value('lightgray')
 )
 
-    chart1A = alt.Chart(result0,title='question01').mark_bar().encode(
+    chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
         x='selection',
         xOffset='selection',
         y='count()',
@@ -94,7 +94,7 @@ if 'question' in result:
         click
     )
 
-    chart1B = alt.Chart(result0).mark_bar(
+    chart1B = alt.Chart(result0,title='question 01').mark_bar(
     ).encode(
         y='selection',
         x='count()',
@@ -105,7 +105,7 @@ if 'question' in result:
     )
     chart1=alt.hconcat(chart1A,chart1B)
     #alt.condition(click, 'Origin', alt.value('lightgray'))
-    chart2A= alt.Chart(result1).mark_bar(
+    chart2A= alt.Chart(result1,title='question 02').mark_bar(
     ).encode(
         x='selection',
         y='count()',
@@ -114,7 +114,7 @@ if 'question' in result:
         click
     )
 
-    chart2B = alt.Chart(result1).mark_bar(
+    chart2B = alt.Chart(result1,title='question 02').mark_bar(
     ).encode(
         y='selection',
         x='count()',
@@ -125,7 +125,7 @@ if 'question' in result:
     )
     chart2=alt.hconcat(chart2A,chart2B)
 
-    chart3A= alt.Chart(result2).mark_bar(
+    chart3A= alt.Chart(result2,title='question 03').mark_bar(
     ).encode(
         x='selection',
         y='count()',
@@ -134,7 +134,7 @@ if 'question' in result:
         click
     )
 
-    chart3B = alt.Chart(result2).mark_bar(
+    chart3B = alt.Chart(result2,title='question 03').mark_bar(
     ).encode(
         y='selection',
         x='count()',
