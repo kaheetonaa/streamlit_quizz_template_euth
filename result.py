@@ -167,7 +167,7 @@ with container1:
         titleFontSize=16
         ).configure_bar(size=50,dx=20)
 
-        col1,col2 = st.columns([1,8])
+        col1,col2 = st.columns([1,6])
         with col2:
             st.altair_chart(chart,theme=None)
     else:
