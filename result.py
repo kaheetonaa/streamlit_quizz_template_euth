@@ -92,7 +92,7 @@ with container1:
             color=color
         ).add_params(
             click
-        )
+        ).properties(width=800)
 
         chart1B = alt.Chart(result0).mark_bar(
         ).encode(
@@ -165,7 +165,7 @@ with container1:
         labelFontSize=12,
         titleFont='comfortaa',
         titleFontSize=16
-        ).configure_bar(size=50,dx=20).properties(width=800)
+        ).configure_bar(size=50,dx=20)
 
         col1,col2 = st.columns([1,4])
         with col2:
