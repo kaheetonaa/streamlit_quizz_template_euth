@@ -23,7 +23,18 @@ collection=db['EuthMappers']
 
 # Custom CSS for the buttons
 st.markdown("""
+
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@100&display=swap'); 
+
+    html, body, h1,h2,h3,p {
+        font-family: 'Comfortaa', sans-serif; 
+        
+    }
+    body{
+        font-size: 18px;
+    }
+
     [role=radiogroup]{
         gap: 1rem;
     }
@@ -36,14 +47,15 @@ st.markdown("""
     h3 {
         text-align: center
     }
+    
     div[data-testid='stAppViewBlockContainer']{
         background-color: white;
     }
             .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-            width:200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+        width:200px;
 }
 </style>
 """, unsafe_allow_html=True)
