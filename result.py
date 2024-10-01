@@ -165,7 +165,7 @@ with container1:
         labelFontSize=12,
         titleFont='comfortaa',
         titleFontSize=16
-        ).configure_bar(size=50,dx=20)
+        ).configure_bar(size=30)
 
         col1,col2 = st.columns([1,5])
         with col2:
