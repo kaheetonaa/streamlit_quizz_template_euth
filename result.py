@@ -92,7 +92,7 @@ with container1:
             color=color
         ).add_params(
             click
-        ).properties(width=500)
+        ).properties(width=300)
 
         chart1B = alt.Chart(result0).mark_bar(
         ).encode(
@@ -103,7 +103,7 @@ with container1:
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
-        ).properties(height=500)
+        ).properties(height=300)
         chart1=alt.hconcat(chart1A,chart1B)
         #alt.condition(click, 'Origin', alt.value('lightgray'))
         chart2A= alt.Chart(result1,title='question 02').mark_bar(
