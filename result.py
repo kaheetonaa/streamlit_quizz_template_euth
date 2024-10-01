@@ -87,7 +87,7 @@ with container1:
 
         chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='selection',
-            xOffset='selection',
+
             y='count()',
             color=color
         ).add_params(
@@ -97,7 +97,7 @@ with container1:
         chart1B = alt.Chart(result0).mark_bar(
         ).encode(
             y='selection',
-            yOffset='selection',
+
             x='count()',
             row='school',
             color=alt.condition(click, 'school', alt.value('lightgray'))
@@ -109,7 +109,7 @@ with container1:
         chart2A= alt.Chart(result1,title='question 02').mark_bar(
         ).encode(
             x='selection',
-            xOffset='selection',
+
             y='count()',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
@@ -119,7 +119,7 @@ with container1:
         chart2B = alt.Chart(result1).mark_bar(
         ).encode(
             y='selection',
-            yOffset='selection',
+
             x='count()',
             row='school',
             color=alt.condition(click, 'school', alt.value('lightgray'))
@@ -131,7 +131,7 @@ with container1:
         chart3A= alt.Chart(result2,title='question 03').mark_bar(
         ).encode(
             x='selection',
-            xOffset='selection',
+
             y='count()',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
@@ -141,7 +141,7 @@ with container1:
         chart3B = alt.Chart(result2).mark_bar(
         ).encode(
             y='selection',
-            yOffset='selection',
+
             x='count()',
             row='school',
             color=alt.condition(click, 'school', alt.value('lightgray'))
