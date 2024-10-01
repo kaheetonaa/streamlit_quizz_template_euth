@@ -26,6 +26,9 @@ collection=db['EuthMappers']
 # Custom CSS for the buttons
 st.markdown("""
 <style>
+    [role=radiogroup]{
+        gap: 1rem;
+    }
     h1 {
         text-align: center
     }
@@ -144,6 +147,6 @@ if 'question' in result:
 
     chart = alt.vconcat(chart1,chart2,chart3).configure(background='white')
 
-    st.altair_chart(chart,theme=None)
+    st.altair_chart(chart)
 else:
     st.write('No answers yet')
