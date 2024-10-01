@@ -66,7 +66,7 @@ result=pd.DataFrame(list(collection.find()))
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-    if st.button('Refresh'):
+    if st.button('Refresh 🔄'):
         placeholder.empty()
     if 'question' in result:
     
