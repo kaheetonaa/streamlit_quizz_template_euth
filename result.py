@@ -41,12 +41,12 @@ st.markdown("""
     div[data-testid='stAppViewBlockContainer']{
         background-color: white;
     }
-            .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-            width:200px;
-}
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width:200px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -143,9 +143,24 @@ if 'question' in result:
     ).add_params(
         click
     )
-    chart3=alt.hconcat(chart3A,chart3B)
+    chart3=alt.hconcat(chart3A,chart3B) 
 
-    chart = alt.vconcat(chart1,chart2,chart3).configure(background='white')
+    chart = alt.vconcat(chart1,chart2,chart3).configure(background='white',countTitle='number').configure_axis(
+    labelFontSize=16,
+    titleFontSize=16,
+    labelFont='comfortaa',
+    titleFont='comfortaa',
+    ).configure_legend(
+    labelFontSize=16,
+    titleFontSize=16,
+    labelFont='comfortaa',
+    titleFont='comfortaa',
+    ).configure_axisY(title=None).configure_headerRow(
+    labelFont='comfortaa',
+    labelFontSize=12,
+    titleFont='comfortaa',
+    titleFontSize=16
+    )
 
     col1,col2,col3 = st.columns(3)
     with col2:
