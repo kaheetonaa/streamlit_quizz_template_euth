@@ -114,7 +114,7 @@ with container1:
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
-        )
+        ).properties(width=300)
 
         chart2B = alt.Chart(result1).mark_bar(
         ).encode(
@@ -125,7 +125,7 @@ with container1:
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
-        )
+        ).properties(height=300)
         chart2=alt.hconcat(chart2A,chart2B)
 
         chart3A= alt.Chart(result2,title='question 03').mark_bar(
@@ -136,7 +136,7 @@ with container1:
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
-        )
+        ).properties(width=300)
 
         chart3B = alt.Chart(result2).mark_bar(
         ).encode(
@@ -147,7 +147,7 @@ with container1:
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
-        )
+        ).properties(height=300)
         chart3=alt.hconcat(chart3A,chart3B) 
 
         chart = alt.vconcat(chart1,chart2,chart3).configure(background='white',countTitle='number').configure_axis(
