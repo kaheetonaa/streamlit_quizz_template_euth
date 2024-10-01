@@ -2,7 +2,6 @@ from pymongo import MongoClient
 import streamlit as st
 import pandas as pd
 import altair as alt
-from vega_datasets import data
 
 def run():
     st.set_page_config(
