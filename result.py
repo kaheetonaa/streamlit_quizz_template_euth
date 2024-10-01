@@ -76,12 +76,15 @@ with container1:
     st.markdown(""" ___""")
 
     
+    
     if 'question' in result:
     
 
         result0=result[result['question']==0].groupby(['selection','school']).count().reset_index()
         result1=result[result['question']==1].groupby(['selection','school']).count().reset_index()
         result2=result[result['question']==2].groupby(['selection','school']).count().reset_index()
+
+        st.write(result0)
 
         #color
         domain = ["🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"]
@@ -97,8 +100,7 @@ with container1:
 
         chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='selection',
-
-            y='count()',
+            y='question',
             color=color
         ).add_params(
             click
@@ -107,7 +109,7 @@ with container1:
         chart1B = alt.Chart(result0).mark_bar(
         ).encode(
             y='selection',
-            x='count()',
+            x='question',
             row='school',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
@@ -119,7 +121,7 @@ with container1:
         ).encode(
             x='selection',
 
-            y='count()',
+            y='question',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
@@ -129,7 +131,7 @@ with container1:
         ).encode(
             y='selection',
 
-            x='count()',
+            x='question',
             row='school',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
@@ -141,7 +143,7 @@ with container1:
         ).encode(
             x='selection',
 
-            y='count()',
+            y='question',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
             click
@@ -150,8 +152,7 @@ with container1:
         chart3B = alt.Chart(result2).mark_bar(
         ).encode(
             y='selection',
-
-            x='count()',
+            x='question',
             row='school',
             color=alt.condition(click, 'school', alt.value('lightgray'))
         ).add_params(
