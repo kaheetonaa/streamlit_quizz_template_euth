@@ -84,7 +84,7 @@ with container1:
         result1=result[result['question']==1].groupby(['selection','school']).count().reset_index()
         result2=result[result['question']==2].groupby(['selection','school']).count().reset_index()
 
-        st.write(result0)
+        #st.write(result0)
 
         #color
         domain = ["🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"]
