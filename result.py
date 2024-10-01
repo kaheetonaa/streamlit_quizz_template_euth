@@ -31,7 +31,6 @@ st.markdown("""
         gap: 1rem;
     }
     .sidebar .sidebar-content {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
     color: white;
     }
     h1 {
