@@ -94,7 +94,7 @@ if 'question' in result:
         click
     )
 
-    chart1B = alt.Chart(result0,title='question 01').mark_bar(
+    chart1B = alt.Chart(result0).mark_bar(
     ).encode(
         y='selection',
         x='count()',
@@ -114,7 +114,7 @@ if 'question' in result:
         click
     )
 
-    chart2B = alt.Chart(result1,title='question 02').mark_bar(
+    chart2B = alt.Chart(result1).mark_bar(
     ).encode(
         y='selection',
         x='count()',
@@ -134,7 +134,7 @@ if 'question' in result:
         click
     )
 
-    chart3B = alt.Chart(result2,title='question 03').mark_bar(
+    chart3B = alt.Chart(result2).mark_bar(
     ).encode(
         y='selection',
         x='count()',
