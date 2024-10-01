@@ -162,7 +162,7 @@ if 'question' in result:
     titleFontSize=16
     )
 
-    col1,col2 = st.columns([1,3])
+    col1,col2 = st.columns([1,4])
     with col2:
         st.altair_chart(chart,theme=None)
 else:
