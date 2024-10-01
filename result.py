@@ -7,7 +7,7 @@ def run():
     st.set_page_config(
         page_title="🌐 EuthMappers quizz result",
         page_icon="✅",
-        layout="wide"
+        layout="centered"
     )
 
 if __name__ == "__main__":
