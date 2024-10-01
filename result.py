@@ -147,6 +147,8 @@ if 'question' in result:
 
     chart = alt.vconcat(chart1,chart2,chart3).configure(background='white')
 
-    st.altair_chart(chart,theme=None)
+    col1,col2,col3 = st.columns(3)
+    with col2:
+        st.altair_chart(chart,theme=None)
 else:
     st.write('No answers yet')
