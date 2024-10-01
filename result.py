@@ -30,7 +30,7 @@ st.markdown("""
     [role=radiogroup]{
         gap: 1rem;
     }
-    .sidebar .sidebar-content {
+    .css-1aumxhk {
     background-color: white;
     }
     h1 {
