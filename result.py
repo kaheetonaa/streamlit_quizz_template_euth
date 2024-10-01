@@ -85,7 +85,7 @@ if 'question' in result:
     alt.value('lightgray')
 )
 
-    chart1A = alt.Chart(result0).mark_bar().encode(
+    chart1A = alt.Chart(result0,title='question01').mark_bar().encode(
         x='selection',
         xOffset='selection',
         y='count()',
