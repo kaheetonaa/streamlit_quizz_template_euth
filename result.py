@@ -31,7 +31,7 @@ st.markdown("""
         gap: 1rem;
     }
     .sidebar .sidebar-content {
-    color: white;
+    background-color: white;
     }
     h1 {
         text-align: center
