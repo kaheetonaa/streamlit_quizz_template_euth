@@ -24,10 +24,10 @@ To get the quiz app running on your local machine:
 git clone https://github.com/benderpt/streamlit_quiz_template.git
 
 2. Navigate to the project directory:
-cd streamlit_quiz_template
+cd streamlit_quizz_template_euth
 
-3. Run the Streamlit app:
-streamlit run app.py
+4. Run the Streamlit app:
+streamlit run main.py
 
 
 # streamlit run main.py
@@ -46,10 +46,13 @@ Contributions are welcome and greatly appreciated. Here's how you can contribute
 4. Push to the branch (`git push origin feature/YourAmazingFeature`).
 5. Open a new Pull Request.
 
+# streamlit run result.py
+Viewing the result
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
 [linkedin](https://www.linkedin.com/in/hugoalmeidamoreira/) – hugoalmeidamoreira@gmail.com
-The fork made by kaheetonaa (Quang Huy NGUYEN - [linkedin](https://www.linkedin.com/in/quanghuynguy3n/) emailto:quanghuy.nguyen@mail.polimi.it) 
+The fork made by kaheetonaa (Quang Huy NGUYEN - [linkedin](https://www.linkedin.com/in/quanghuynguy3n/) quanghuy.nguyen@mail.polimi.it) 
 
