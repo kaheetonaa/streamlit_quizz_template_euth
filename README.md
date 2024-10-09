@@ -51,5 +51,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 [linkedin](https://www.linkedin.com/in/hugoalmeidamoreira/) – hugoalmeidamoreira@gmail.com
-The fork made by kaheetonaa (Quang Huy NGUYEN - [linkedin](https://www.linkedin.com/in/quanghuynguy3n/) ) 
+The fork made by kaheetonaa (Quang Huy NGUYEN - [linkedin](https://www.linkedin.com/in/quanghuynguy3n/) emailto:quanghuy.nguyen@mail.polimi.it) 
 
