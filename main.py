@@ -17,8 +17,8 @@ def init_connection():
 
 client = init_connection()
 
-db=client['EuthMappers']
-collection=db['EuthMappers']
+db=client['EuthMappers_2']
+collection=db['EuthMappers_2']
 
 
 # Custom CSS for the buttons
