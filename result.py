@@ -18,8 +18,10 @@ st.session_state.ws=int(st.query_params['ws'])
 match st.session_state.ws:
     case 1:
         database_name='EuthMappers'
+        st.write('The result of the workshop on 03/10/2024')
     case 2:
         database_name='EuthMappers_2'
+        st.write('The result of the workshop on 09/10/2024')
 
 @st.cache_resource
 def init_connection():
