@@ -28,7 +28,7 @@ match st.session_state.ws:
         database_name='EuthMappers_2'
         note='<h1>The result of the workshop on 09/10/2024</h1>'
 
-if st.session_state.ws!==0:
+if st.session_state.ws!=0:
     @st.cache_resource
     def init_connection():
         return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -83,7 +83,7 @@ st.markdown("""
 # Title and description
 container1 = st.container()
 placeholder = st.empty()
-if (st.session_state.ws!==0):
+if (st.session_state.ws!=0):
     result=pd.DataFrame(list(collection.find()))
 else:
     result=pd.DataFrame(pd.read_csv('quizz_answer.csv'))
