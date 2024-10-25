@@ -18,10 +18,10 @@ st.session_state.ws=int(st.query_params['ws'])
 match st.session_state.ws:
     case 1:
         database_name='EuthMappers'
-        st.write('The result of the workshop on 03/10/2024')
+        note='<h1>The result of the workshop on 03/10/2024</h1>'
     case 2:
         database_name='EuthMappers_2'
-        st.write('The result of the workshop on 09/10/2024')
+        note='<h1>The result of the workshop on 03/10/2024</h1>'
 
 @st.cache_resource
 def init_connection():
@@ -83,7 +83,7 @@ with st.sidebar:
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-
+    st.write(note,unsafe_allow_html=True)
     
     
     if 'question' in result:
