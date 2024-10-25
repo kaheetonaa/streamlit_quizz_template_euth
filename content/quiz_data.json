@@ -19,5 +19,12 @@
         "information": "You can select only one answers.",
         "options": ["Yes, I have already known","Yes, but not clearly", "I don't know"],
         "answer": "Free"
+    },
+    {
+        "type":"single",
+        "question": "What do you think about the UN Mappers workshop?",
+        "information": "You can select only one answers.",
+        "options": ["Positive","Neutral", "Non positive","I am not sure"],
+        "answer": "Free"
     }
 ]
