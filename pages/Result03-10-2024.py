@@ -11,6 +11,9 @@ def run():
         initial_sidebar_state='expanded'
     )
 
+if __name__ == "__main__":
+    run()
+
 @st.cache_resource
 def init_connection():
     return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
