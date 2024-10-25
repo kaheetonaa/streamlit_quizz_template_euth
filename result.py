@@ -77,6 +77,7 @@ st.markdown("""
 container1 = st.container()
 placeholder = st.empty()
 result=pd.DataFrame(list(collection.find()))
+result
 with st.sidebar:
     if st.button('Refresh 🔄'):
         placeholder.empty()
