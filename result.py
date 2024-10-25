@@ -21,7 +21,7 @@ match st.session_state.ws:
         note='<h1>The result of the workshop on 03/10/2024</h1>'
     case 2:
         database_name='EuthMappers_2'
-        note='<h1>The result of the workshop on 03/10/2024</h1>'
+        note='<h1>The result of the workshop on 09/10/2024</h1>'
 
 @st.cache_resource
 def init_connection():
