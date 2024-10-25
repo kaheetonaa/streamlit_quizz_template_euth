@@ -15,7 +15,7 @@ if __name__ == "__main__":
     run()
 
 st.session_state.ws=int(st.query_params['ws'])
-match st.session_sate.ws:
+match st.session_state.ws:
     case 1:
         database_name='EuthMappers'
     case 2:
