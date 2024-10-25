@@ -11,6 +11,9 @@ def run():
         initial_sidebar_state='expanded'
     )
 
+if __name__ == "__main__":
+    run()
+
 pg = st.navigation([
     st.Page("pages/Result09-10-2024.py", title="Result 09/10/2024", icon="🔥"),
     st.Page("pages/Result03-10-2024.py", title="Result 03/10/2024", icon="🔥")

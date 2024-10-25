@@ -3,16 +3,14 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
-def run():
-    st.set_page_config(
+st.set_page_config(
         page_title="🌐 EuthMappers quizz result",
         page_icon="✅",
         layout="wide",
         initial_sidebar_state='expanded'
-    )
+)
 
-if __name__ == "__main__":
-    run()
+
 
 @st.cache_resource
 def init_connection():
