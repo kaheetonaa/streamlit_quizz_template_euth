@@ -11,6 +11,7 @@ def run():
         initial_sidebar_state='expanded'
     )
 
+
 if __name__ == "__main__":
     run()
 
@@ -18,6 +19,7 @@ st.session_state.ws=int(st.query_params['ws'])
 
 match st.session_state.ws:
     case 0:
+        database_name='EuthMappers'
         note='<h1>The result of the two workshops</h1>'
     case 1:
         database_name='EuthMappers'
