@@ -16,6 +16,8 @@ if __name__ == "__main__":
 
 st.session_state.ws=int(st.query_params['ws'])
 match st.session_state.ws:
+    case 0:
+        note='<h1>The result of the two workshops</h1>'
     case 1:
         database_name='EuthMappers'
         note='<h1>The result of the workshop on 03/10/2024</h1>'
@@ -26,6 +28,7 @@ match st.session_state.ws:
 @st.cache_resource
 def init_connection():
     return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+
 
 client = init_connection()
 
@@ -76,8 +79,10 @@ st.markdown("""
 # Title and description
 container1 = st.container()
 placeholder = st.empty()
-result=pd.DataFrame(list(collection.find()))
-result
+if (st.session_state.ws!=0):
+    result=pd.DataFrame(list(collection.find()))
+else:
+    result=pd.DataFrame(pd.read_csv('quizz_answer.csv'))
 with st.sidebar:
     if st.button('Refresh 🔄'):
         placeholder.empty()
